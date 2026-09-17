@@ -78,40 +78,40 @@ const ITENS_POR_PAGINA = 8;   // <<< quantos produtos aparecem por página
     {id:5, name:"Yara Tradicional (Lattafa)", tag:"Oriental Floral Gourmand (Doce, cremoso, frutado e delicado)", note:"Perfume feminino, doce e extremamente cremoso, que combina flores delicadas com o toque irresistível de frutas tropicais, baunilha e um fundo aveludado estilo marshmallow.", price:230.00, atacado:"cosultar", decant:37.90, cat:"feminino", c:["#1c150a","#090604"]},
 
 
-    {id:6, name:"Yara elixir", tag:"Oriental Floral Gourmand Intenso (Mais fechado, sedutor e marcante que o tradicional).", note:"Versão intensa e sedutora da linha Yara, que combina o toque frutado e licoroso das frutas vermelhas com flores marcantes e um fundo potente de baunilha e âmbar.", price:250.00, atacado:"consultar", decant:46.41, cat:"feminino", c:["#331c28","#130a0f"]},
+    {id:6, name:"Yara elixir (Lattafa)", tag:"Oriental Floral Gourmand Intenso (Mais fechado, sedutor e marcante que o tradicional).", note:"Versão intensa e sedutora da linha Yara, que combina o toque frutado e licoroso das frutas vermelhas com flores marcantes e um fundo potente de baunilha e âmbar.", price:250.00, atacado:"consultar", decant:46.41, cat:"feminino", c:["#331c28","#130a0f"]},
 
 
-    {id:7, name:"Xeique", tag:"Amadeirado Especiado", note:"Cardamomo, canela e baunilha", price:199.90, atacado:149.90, decant:43.90, cat:"masculino", c:["#211a10","#0b0805"]},
+    {id:7, name:"Al Noble Safeer (Lattafa)", tag:"Amadeirado Aromático Verde (Fresco, terroso e refinado)", note:"Perfume marcante e exótico de perfil herbal e amadeirado, que mistura o frescor das ervas finas com um fundo denso de madeiras nobres e incenso.", price:220.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#211a10","#0b0805"]},
 
 
-    {id:8, name:"Emir Dourado", tag:"Oriental Marcante", note:"Couro, fumo e especiarias", price:214.90, atacado:161.90, decant:47.90, cat:"masculino", c:["#2a2115","#0f0b06"]},
+    {id:8, name:"Al Noble Wazeer (Lattafa)", tag:"Oriental Frutado Gourmand (Aconchegante, levemente fresco e adocicado)", note:"Perfume rico e envolvente que contrasta um toque fresco de menta e frutas na saída com um coração aveludado de chocolate, baunilha e âmbar amadeirado.", price:220.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#2a2115","#0f0b06"]},
 
 
-    {id:9, name:"Guerreiro de Ouro", tag:"Couro e Especiarias", note:"Sândalo, pimenta e cedro", price:214.90, atacado:161.90, decant:47.90, cat:"masculino", c:["#3a2c12","#160f06"]},
+    {id:9, name:"Al Noble Ameer (Lattafa)", tag:"Oriental Amadeirado Especiado (Intenso, denso e picante)", note:"Perfume imponente e sofisticado, que combina um toque aromático na saída com o calor de especiarias marcantes e um fundo denso de amadeirado nobre com oud.", price:220.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#3a2c12","#160f06"]},
 
 
-    {id:10, name:"Trono Real", tag:"Amadeirado Clássico", note:"Oud, café e baunilha", price:229.90, atacado:172.90, decant:50.90, cat:"masculino", c:["#3a1a1c","#160a0b"]},
+    {id:10, name:"Khamrah Dukhan (Lattafa)", tag:"Oriental Amadeirado Defumado (Mais fechado, incensado e misterioso)", note:"Interpretação mais misteriosa da linha Khamrah, que traz o toque adocicado e especiado característico envolvido por uma fumaça densa de incenso e um fundo quente de âmbar e baunilha.", price:220.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#3a1a1c","#160a0b"]},
 
 
-    {id:11, name:"Principe Arabe", tag:"Amadeirado Intenso", note:"Oud, âmbar e patchouli", price:154.90, atacado:116.90, decant:34.90, cat:"masculino", c:["#3a230f","#170f06"]},
+    {id:11, name:"Khamrah Qahwa (Lattafa)", tag:"Oriental Gourmand Quente (Doce, alcoólico e levemente amargo pelo café)", note:"Versão intensa do Khamrah com um toque marcante de café arábico, misturando canela quente, pralinê doce e um fundo cremoso de baunilha e fava tonka.", price:220.00, atacado:"consultar", decant:37.90, cat:"unissex", c:["#3a230f","#170f06"]},
 
 
-    {id:12, name:"Leao do Deserto", tag:"Amadeirado Especiado", note:"Cardamomo, canela e baunilha", price:169.90, atacado:127.90, decant:37.90, cat:"masculino", c:["#232323","#0c0c0c"]},
+    {id:12, name:"Khamrah Tradicional (Lattafa)", tag:"Oriental Gourmand Adocicado (Rico, licoroso e extremamente cremoso)", note:"Perfume doce, licoroso e viciante, que combina o calor da canela e da noz-moscada com um coração suculento de pralinê e fava tonka em um fundo cremoso de baunilha.", price:220.00, atacado:"consultar", decant:37.90, cat:"unissex", c:["#232323","#0c0c0c"]},
 
 
-    {id:13, name:"Escudo de Oud", tag:"Oriental Marcante", note:"Couro, fumo e especiarias", price:169.90, atacado:127.90, decant:37.90, cat:"masculino", c:["#1c150a","#090604"]},
+    {id:13, name:"Khamrah Waha (Lattafa)", tag:"Aromático, Fresco Aquático e Amadeirado (A versão azul, tropical e refrescante da linha)", note:"Reinterpretação fresca e tropical da linha, que traz a energia da bergamota e do sal marinho com um toque mineral de pepino, mantendo um fundo suave de baunilha e amadeirado.", price:420.00, atacado:"consultar", decant:80.00, cat:"unissex", c:["#1c150a","#090604"]},
 
 
-    {id:14, name:"Falcao Real", tag:"Couro e Especiarias", note:"Sândalo, pimenta e cedro", price:184.90, atacado:138.90, decant:40.90, cat:"masculino", c:["#331c28","#130a0f"]},
+    {id:14, name:"Fakhar Platin (Lattafa)", tag:"Aromático Fougère (Fresco, especiado e elegante)", note:"Perfume versátil e elegante de perfil prateado/metálico, que combina o frescor cítrico da bergamota e a limpeza da lavanda com um toque picante de gengibre e fundo amadeirado.", price:230.00, atacado:"consultar", decant:37.90, cat:"mculino", c:["#331c28","#130a0f"]},
 
 
-    {id:15, name:"Deserto Ardente", tag:"Amadeirado Clássico", note:"Oud, café e baunilha", price:184.90, atacado:138.90, decant:40.90, cat:"masculino", c:["#211a10","#0b0805"]},
+    {id:15, name:"Fakhar Black (Lattafa)", tag:"Aromático Fougère (Fresco, frutado e elegante — inspirado no Yves Saint Laurent Y Eau de Parfum)", note:"Perfume coringa e extremamente versátil, que combina a suculência da maçã verde com um corpo aromático de sálvia e um fundo amadeirado levemente adocicado.", price:230.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#211a10","#0b0805"]},
 
 
-    {id:16, name:"Sombra Real", tag:"Amadeirado Intenso", note:"Oud, âmbar e patchouli", price:199.90, atacado:149.90, decant:43.90, cat:"masculino", c:["#2a2115","#0f0b06"]},
+    {id:16, name:"Fakhar Gold (Lattafa)", tag:"Oriental Floral Gourmand (Doce, solar e opulentamente cremoso — inspirado no One Million Parfum da Paco Rabanne).", note:"Perfume marcante e exótico, que mistura a opulência da tuberosa e notas solares aquecidas com um fundo doce, aveludado e cremoso de âmbar e cashmeran.", price:220.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#2a2115","#0f0b06"]},
 
 
-    {id:17, name:"Coroa Negra", tag:"Amadeirado Especiado", note:"Cardamomo, canela e baunilha", price:199.90, atacado:149.90, decant:43.90, cat:"masculino", c:["#3a2c12","#160f06"]},
+    {id:17, name:"Fakhar Rose (Lattafa)", tag:"Floral Frutado (Feminino, cremoso, doce e elegante — inspirado no L'Interdit Eau de Parfum da Givenchy)", note:"Perfume feminino marcante e extremamente sofisticado, dominado pela cremosidade da tuberosa e do jasmim sobre um toque frutado de lichia e um fundo aveludado de baunilha.", price:240.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#3a2c12","#160f06"]},
 
 
     {id:18, name:"Espada de Ouro", tag:"Oriental Marcante", note:"Couro, fumo e especiarias", price:214.90, atacado:161.90, decant:47.90, cat:"masculino", c:["#3a1a1c","#160a0b"]},
