@@ -209,14 +209,78 @@ document.querySelectorAll('.reveal').forEach(observeReveal);
    ===================================================================== */
 let currentFilter = 'todos';
 let currentPage = 1;
+let searchTerm = '';
+
+// tira acento pra busca não ficar chata ("orquidea" tem que achar "Orquídea")
+function normalizar(str){
+  return String(str).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
 
 function filteredProducts(){
-  return products.filter(p => currentFilter === 'todos' || p.cat === currentFilter);
+  let list = products;
+  if(currentFilter === 'favoritos') list = list.filter(p => isFavorite(p.id));
+  else if(currentFilter !== 'todos') list = list.filter(p => p.cat === currentFilter);
+
+  if(searchTerm){
+    const termo = normalizar(searchTerm);
+    list = list.filter(p =>
+      normalizar(p.name).includes(termo) ||
+      normalizar(p.tag).includes(termo) ||
+      normalizar(p.note).includes(termo)
+    );
+  }
+  return list;
+}
+
+/* =====================================================================
+   FAVORITOS (lista de desejos)
+   Guardado no localStorage do navegador do cliente — continua salvo
+   mesmo se ele fechar a aba e voltar depois, sem precisar de login.
+   ===================================================================== */
+function loadFavorites(){
+  try{ return JSON.parse(localStorage.getItem('cr_favoritos')) || []; }
+  catch(e){ return []; }
+}
+let favorites = loadFavorites();
+
+function isFavorite(id){ return favorites.includes(id); }
+
+function toggleFavorite(id){
+  favorites = isFavorite(id) ? favorites.filter(f => f !== id) : [...favorites, id];
+  localStorage.setItem('cr_favoritos', JSON.stringify(favorites));
+  document.querySelectorAll(`.fav-btn[data-pid="${id}"]`).forEach(btn => btn.classList.toggle('active', isFavorite(id)));
+  updateFavNavCount();
+  if(currentFilter === 'favoritos') renderGrid(); // se estava filtrando por favoritos, atualiza a lista na hora
+}
+
+// número de favoritos que aparece "pulando" no coração do cabeçalho
+function updateFavNavCount(){
+  document.getElementById('fav-nav-count').textContent = favorites.length;
+}
+
+// clique no coração do cabeçalho: leva direto pra coleção já filtrada
+// só nos favoritos — essa é a "aba" de favoritos do site.
+function goToFavorites(){
+  currentFilter = 'favoritos';
+  currentPage = 1;
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.filter === 'favoritos'));
+  renderGrid();
+  document.getElementById('colecao').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// selo (Oferta / Mais vendido / Lançamento) — só aparece se o produto
+// estiver no array "offers" do produtos.js.
+function offerBadgeFor(id){
+  const offer = offers.find(o => o.productId === id);
+  return offer ? offer.badge : null;
 }
 
 function renderGrid(){
   const grid = document.getElementById('product-grid');
+  const emptyState = document.getElementById('empty-state');
   const list = filteredProducts();
+
+  emptyState.hidden = list.length > 0;
   const totalPages = Math.max(1, Math.ceil(list.length / ITENS_POR_PAGINA));
   if(currentPage > totalPages) currentPage = totalPages;
 
@@ -228,8 +292,11 @@ function renderGrid(){
     const card = document.createElement('article');
     card.className = 'card reveal';
     card.style.transitionDelay = `${(index % ITENS_POR_PAGINA) * 0.06}s`; // efeito cascata
+    const badge = offerBadgeFor(p.id);
     card.innerHTML = `
       <div class="card-icon-wrap">
+        ${badge ? `<span class="card-badge">${badge}</span>` : ''}
+        <button class="fav-btn ${isFavorite(p.id)?'active':''}" data-pid="${p.id}" onclick="event.stopPropagation(); toggleFavorite(${p.id})" aria-label="Favoritar">♥</button>
         <div class="card-icon" id="icon-${p.id}">${cardVisual(p, 'icon-'+p.id)}</div>
         ${cardCarouselControls(p)}
       </div>
@@ -293,7 +360,37 @@ document.getElementById('chips').addEventListener('click', e => {
   renderGrid();
 });
 
+document.getElementById('search-input').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  currentPage = 1;
+  renderGrid();
+});
+
 renderGrid();
+updateFavNavCount();
+
+/* =====================================================================
+   MENU MOBILE (hambúrguer no cabeçalho)
+   ===================================================================== */
+function toggleMobileMenu(){
+  const open = document.getElementById('mobile-menu').classList.toggle('open');
+  document.getElementById('menu-btn').setAttribute('aria-expanded', open);
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('menu-btn').setAttribute('aria-expanded', 'false');
+}
+
+/* =====================================================================
+   CABEÇALHO COM SOMBRA AO ROLAR + BOTÃO "VOLTAR AO TOPO"
+   ===================================================================== */
+const headerEl = document.querySelector('header');
+const topFloatEl = document.getElementById('top-float');
+window.addEventListener('scroll', () => {
+  const rolou = window.scrollY > 40;
+  headerEl.classList.toggle('scrolled', rolou);
+  topFloatEl.classList.toggle('visible', window.scrollY > 500);
+});
 
 /* =====================================================================
    5) CARROSSEL DE OFERTAS — lógica (troca de slide, setas, bolinhas,

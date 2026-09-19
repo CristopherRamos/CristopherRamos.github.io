@@ -75,10 +75,23 @@ const ITENS_POR_PAGINA = 8;   // <<< quantos produtos aparecem por página
     {id:4, name:"Asad Zanzibar Limited Edition (Lattafa) ", tag:"Aromático, Amadeirado e Especiado", note:"Versão mais exclusiva e refinada, que troca o toque tropical por uma explosão picante de pimenta e cardamomo, combinada com íris e um fundo denso de baunilha e âmbar amadeirado.", price:220.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#232323","#0c0c0c"]},
 
 
-    {id:5, name:"Yara Tradicional (Lattafa)", tag:"Oriental Floral Gourmand (Doce, cremoso, frutado e delicado)", note:"Perfume feminino, doce e extremamente cremoso, que combina flores delicadas com o toque irresistível de frutas tropicais, baunilha e um fundo aveludado estilo marshmallow.", price:230.00, atacado:"cosultar", decant:37.90, cat:"feminino", c:["#1c150a","#090604"]},
+    {id:5, name:"Yara Tradicional (Lattafa)", tag:"Oriental Floral Gourmand (Doce, cremoso, frutado e delicado)", note:"Perfume feminino, doce e extremamente cremoso, que combina flores delicadas com o toque irresistível de frutas tropicais, baunilha e um fundo aveludado estilo marshmallow.", price:230.00, atacado:"consultar", decant:37.90, cat:"feminino", c:["#1c150a","#090604"]},
 
 
     {id:6, name:"Yara elixir (Lattafa)", tag:"Oriental Floral Gourmand Intenso (Mais fechado, sedutor e marcante que o tradicional).", note:"Versão intensa e sedutora da linha Yara, que combina o toque frutado e licoroso das frutas vermelhas com flores marcantes e um fundo potente de baunilha e âmbar.", price:250.00, atacado:"consultar", decant:46.41, cat:"feminino", c:["#331c28","#130a0f"]},
+
+    /* ---------------------------------------------------------------
+       3 VAGAS NOVAS DA LINHA YARA — preencha nome, tag, note e preços
+       e apague o "// " do início da linha "id:" pra cada uma (ela já
+       fica ativa assim que você mexer nos dados, não precisa mexer em
+       mais nada). Fotos: produto-61.jpg, produto-62.jpg, produto-63.jpg
+       (e -2/-3 se tiver mais de uma foto de cada).
+       --------------------------------------------------------------- */
+    {id:61, name:"Yara PREENCHER (Lattafa)", tag:"PREENCHER — nota olfativa curta", note:"PREENCHER — descrição das notas do perfume.", price:0.00, atacado:"consultar", decant:0.00, cat:"feminino", c:["#211a10","#0b0805"]},
+
+    {id:62, name:"Yara PREENCHER (Lattafa)", tag:"PREENCHER — nota olfativa curta", note:"PREENCHER — descrição das notas do perfume.", price:0.00, atacado:"consultar", decant:0.00, cat:"feminino", c:["#2a2115","#0f0b06"]},
+
+    {id:63, name:"Yara PREENCHER (Lattafa)", tag:"PREENCHER — nota olfativa curta", note:"PREENCHER — descrição das notas do perfume.", price:0.00, atacado:"consultar", decant:0.00, cat:"feminino", c:["#3a2c12","#160f06"]},
 
 
     {id:7, name:"Al Noble Safeer (Lattafa)", tag:"Amadeirado Aromático Verde (Fresco, terroso e refinado)", note:"Perfume marcante e exótico de perfil herbal e amadeirado, que mistura o frescor das ervas finas com um fundo denso de madeiras nobres e incenso.", price:220.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#211a10","#0b0805"]},
@@ -102,7 +115,7 @@ const ITENS_POR_PAGINA = 8;   // <<< quantos produtos aparecem por página
     {id:13, name:"Khamrah Waha (Lattafa)", tag:"Aromático, Fresco Aquático e Amadeirado (A versão azul, tropical e refrescante da linha)", note:"Reinterpretação fresca e tropical da linha, que traz a energia da bergamota e do sal marinho com um toque mineral de pepino, mantendo um fundo suave de baunilha e amadeirado.", price:420.00, atacado:"consultar", decant:80.00, cat:"unissex", c:["#1c150a","#090604"]},
 
 
-    {id:14, name:"Fakhar Platin (Lattafa)", tag:"Aromático Fougère (Fresco, especiado e elegante)", note:"Perfume versátil e elegante de perfil prateado/metálico, que combina o frescor cítrico da bergamota e a limpeza da lavanda com um toque picante de gengibre e fundo amadeirado.", price:230.00, atacado:"consultar", decant:37.90, cat:"mculino", c:["#331c28","#130a0f"]},
+    {id:14, name:"Fakhar Platin (Lattafa)", tag:"Aromático Fougère (Fresco, especiado e elegante)", note:"Perfume versátil e elegante de perfil prateado/metálico, que combina o frescor cítrico da bergamota e a limpeza da lavanda com um toque picante de gengibre e fundo amadeirado.", price:230.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#331c28","#130a0f"]},
 
 
     {id:15, name:"Fakhar Black (Lattafa)", tag:"Aromático Fougère (Fresco, frutado e elegante — inspirado no Yves Saint Laurent Y Eau de Parfum)", note:"Perfume coringa e extremamente versátil, que combina a suculência da maçã verde com um corpo aromático de sálvia e um fundo amadeirado levemente adocicado.", price:230.00, atacado:"consultar", decant:37.90, cat:"masculino", c:["#211a10","#0b0805"]},
@@ -159,7 +172,7 @@ const ITENS_POR_PAGINA = 8;   // <<< quantos produtos aparecem por página
     {id:32, name:"Orquidea Negra", tag:"Floral Adocicado", note:"Âmbar, baunilha e jasmim", price:169.90, atacado:127.90, decant:37.90, cat:"feminino", c:["#2a2115","#0f0b06"]},
 
 
-    {id:33, name:"Perola do Oriente", tag:"Floral Frutado", note:"Damasco, lírio e almíscar", price:169.90, atacado:127.90, decant:37.90, cat:"feminino", c:["#3a2c12","#160f06"]},
+    {id:33, name:"Prola do Oriente", tag:"Floral Frutado", note:"Damasco, lírio e almíscar", price:169.90, atacado:127.90, decant:37.90, cat:"feminino", c:["#3a2c12","#160f06"]},
 
 
     {id:34, name:"Seda Dourada", tag:"Floral Amadeirado", note:"Jasmim, sândalo e mel", price:184.90, atacado:138.90, decant:40.90, cat:"feminino", c:["#3a1a1c","#160a0b"]},
@@ -241,6 +254,9 @@ const ITENS_POR_PAGINA = 8;   // <<< quantos produtos aparecem por página
 
 
     {id:60, name:"Heranca Real", tag:"Fresco Amadeirado", note:"Oud, rosa e almíscar", price:179.90, atacado:134.90, decant:39.90, cat:"unissex", c:["#232323","#0c0c0c"]},
+
+    // ids 61, 62 e 63 já estão em uso (as 3 vagas novas da linha Yara, logo no topo da lista)
+    // -> a próxima vaga livre pra um produto novo é o id 64.
   ];
 
 /* =====================================================================
