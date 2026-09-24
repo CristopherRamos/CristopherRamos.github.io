@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CR Store — Perfumaria Árabe de Luxo</title>
+
+  <!-- =====================================================================
+       SEO / COMPARTILHAMENTO — texto que aparece no Google e quando o
+       link é compartilhado no WhatsApp/Instagram. Troque a descrição e
+       a imagem (og:image) se quiser personalizar o card de link.
+       ===================================================================== -->
+  <meta name="description" content="Perfumaria árabe de luxo: fragrâncias intensas de âmbar, oud e especiarias do deserto. Compre com envio para todo o Brasil e pedido direto pelo WhatsApp.">
+  <meta name="theme-color" content="#0a0805">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="apple-touch-icon" href="images/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CR Store — Perfumaria Árabe de Luxo">
+  <meta property="og:description" content="Fragrâncias árabes intensas e sofisticadas, inspiradas em âmbar, oud e especiarias douradas do deserto.">
+  <meta property="og:image" content="images/hero-bg.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FIM GOOGLE FONTS -->
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="texture"></div><!--texture-->
+
+  <!-- =====================================================================
+       CABEÇALHO — troque o texto "CR STORE" / "PERFUMARIA ÁRABE" aqui
+       e o número do whatsapp que aparece no link abaixo se precisar.
+       ===================================================================== -->
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <a href="#">
+          <img src="images/logo.jpg" alt="Logo CR Store"><!-- <<< arquivo do logo: images/logo.jpg -->
+        </a>
+        <div>
+          <div class="brand-name">CR STORE</div>
+          <div class="brand-sub">PERFUMARIA ÁRABE</div>
+        </div>
+      </div><!--brand-->
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#colecao">Coleção</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="nav-right">
+        <button class="fav-nav-btn" onclick="goToFavorites()" aria-label="Ver favoritos">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-6.7-4.35-9.3-8.05C.9 10.5 1.3 7.3 3.7 5.6c2.1-1.5 4.7-1 6.3.9L12 8.5l2-2c1.6-1.9 4.2-2.4 6.3-.9 2.4 1.7 2.8 4.9 1 7.35C18.7 16.65 12 21 12 21z"/></svg>
+          <span class="cart-count" id="fav-nav-count">0</span>
+        </button>
+        <button class="cart-btn" onclick="openCart()" aria-label="Abrir carrinho">
+          Carrinho <span id="cart-total-mini">R$ 0,00</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="menu-btn" id="menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div><!--nav-right-->
+    </div><!--nav-->
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Navegação mobile">
+      <a href="#colecao" onclick="closeMobileMenu()">Coleção</a>
+      <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
+      <a href="#contato" onclick="closeMobileMenu()">Contato</a>
+    </nav><!--mobile-menu-->
+  </header>
+
+  <main>
+
+    <!-- =====================================================================
+         HERO — texto de destaque + carrossel de ofertas ao lado.
+         O carrossel é montado 100% via JavaScript (veja script.js,
+         seção "5) CARROSSEL DE OFERTAS") — aqui no HTML só existe a
+         caixa vazia dele.
+         ===================================================================== -->
+    <section class="hero" aria-label="Destaque principal">
+      <!-- partículas douradas flutuantes — puramente decorativo -->
+      <div class="hero-sparkles" aria-hidden="true">
+        <span class="spark"></span><span class="spark"></span><span class="spark"></span>
+        <span class="spark"></span><span class="spark"></span><span class="spark"></span>
+        <span class="spark"></span><span class="spark"></span><span class="spark"></span>
+        <span class="spark"></span><span class="spark"></span><span class="spark"></span>
+        <span class="spark"></span><span class="spark"></span><span class="spark"></span>
+        <span class="spark"></span><span class="spark"></span><span class="spark"></span>
+      </div><!--hero-sparkles-->
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">ESSÊNCIAS DO ORIENTE</p>
+          <h1>Fragrâncias que<br>contam <em>histórias</em></h1>
+          <p>Uma seleção de perfumes árabes intensos e sofisticados, inspirados nos aromas de âmbar, oud e especiarias douradas do deserto.</p>
+          <div class="hero-cta">
+            <a href="#colecao" class="btn-primary">Ver coleção</a>
+            <a href="#contato" class="btn-ghost">Falar no WhatsApp</a>
+          </div>
+        </div><!--hero-text-->
+
+        <!-- caixa do carrossel — o conteúdo é preenchido pelo JS (renderOffer) -->
+        <div class="offer-carousel" aria-label="Carrossel de ofertas">
+          <span class="offer-badge">EM DESTAQUE</span>
+          <div id="offer-slide" class="offer-slide"><!-- slide atual entra aqui --></div>
+          <button class="offer-arrow left" onclick="prevOffer()" aria-label="Oferta anterior">‹</button>
+          <button class="offer-arrow right" onclick="nextOffer()" aria-label="Próxima oferta">›</button>
+          <div class="offer-dots" id="offer-dots"><!-- bolinhas de navegação --></div>
+        </div><!--offer-carousel-->
+      </div><!--hero-inner-->
+    </section><!--hero-->
+
+    <!-- =====================================================================
+         FAIXA DE DESTAQUES — texto correndo em loop, só decorativo/
+         reforço de confiança. Pra trocar os textos, edite as 5 frases
+         dentro de UMA das duas ".marquee-track" (a segunda é uma cópia
+         idêntica da primeira, gerada automaticamente pra fazer o loop
+         ficar contínuo sem "emenda" visível).
+         ===================================================================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>✦ Perfumes 100% originais</span>
+        <span>✦ Envio para todo o Brasil</span>
+        <span>✦ Pedido direto pelo WhatsApp</span>
+        <span>✦ Fragrâncias de alta fixação</span>
+        <span>✦ Amostras em decant disponíveis</span>
+      </div><!--marquee-track-->
+      <div class="marquee-track" aria-hidden="true">
+        <span>✦ Perfumes 100% originais</span>
+        <span>✦ Envio para todo o Brasil</span>
+        <span>✦ Pedido direto pelo WhatsApp</span>
+        <span>✦ Fragrâncias de alta fixação</span>
+        <span>✦ Amostras em decant disponíveis</span>
+      </div><!--marquee-track (cópia p/ loop contínuo)-->
+    </div><!--marquee-->
+
+    <!-- =====================================================================
+         COLEÇÃO / CATÁLOGO — grade de produtos + paginação
+         ===================================================================== -->
+    <section class="section" id="colecao" aria-label="Coleção de perfumes">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>A coleção</h2>
+          <p>Cada frasco carrega uma nota diferente da tradição perfumista árabe — do amadeirado ao floral adocicado.</p>
+        </div><!--section-head-->
+
+        <div class="catalog-controls">
+          <nav class="chips" id="chips" aria-label="Filtrar por categoria">
+            <button class="chip active" data-filter="todos">Todos</button>
+            <button class="chip" data-filter="masculino">Masculino</button>
+            <button class="chip" data-filter="feminino">Feminino</button>
+            <button class="chip" data-filter="unissex">Unissex</button>
+            <button class="chip chip-fav" data-filter="favoritos">♥ Favoritos</button>
+          </nav><!--chips-->
+
+          <label class="search-box" aria-label="Buscar perfume">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.47 6.47 0 0 0 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14"/></svg>
+            <input type="text" id="search-input" placeholder="Buscar por nome ou nota olfativa...">
+          </label><!--search-box-->
+        </div><!--catalog-controls-->
+
+        <p class="empty-state" id="empty-state" hidden>Nenhum perfume encontrado. Tente outro termo ou categoria.</p>
+
+        <div class="grid" id="product-grid"><!-- os 8 produtos da página atual entram aqui via JS (script.js) --></div><!--grid-->
+
+        <!-- Página 1, 2, 3... gerado automaticamente conforme o total de produtos -->
+        <nav class="pagination" id="pagination" aria-label="Paginação da coleção"></nav>
+      </div><!--wrap-->
+    </section><!--colecao-->
+
+    <section class="strip" id="sobre" aria-label="Diferenciais da loja">
+      <div class="wrap strip-grid">
+        <div class="strip-item reveal"><h3 class="counter" data-target="100" data-suffix="%">0%</h3><p>ORIGINAIS E LACRADOS</p></div>
+        <div class="strip-item reveal" style="transition-delay:.1s"><h3>Envio</h3><p>PARA TODO O BRASIL</p></div>
+        <div class="strip-item reveal" style="transition-delay:.2s"><h3>Pedido</h3><p>DIRETO PELO WHATSAPP</p></div>
+      </div><!--strip-grid-->
+    </section><!--strip-->
+
+    <!-- =====================================================================
+         AVALIAÇÕES — prova social. Troque os textos/nomes pelos
+         depoimentos reais dos seus clientes quando tiver (print de
+         WhatsApp, avaliação do Instagram, etc.).
+         ===================================================================== -->
+    <section class="section" aria-label="Avaliações de clientes">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>O que dizem</h2>
+          <p>Clientes que já sentiram o poder das nossas fragrâncias.</p>
+        </div><!--section-head-->
+
+        <div class="reviews-grid">
+          <div class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>"Fixação absurda, dura o dia inteiro. Chegou rápido e muito bem embalado."</p>
+            <span class="review-author">— Marina S.</span>
+          </div><!--review-card-->
+          <div class="review-card reveal" style="transition-delay:.1s">
+            <div class="stars">★★★★★</div>
+            <p>"Já comprei três vezes. Atendimento pelo WhatsApp é rápido e o cheiro é surreal."</p>
+            <span class="review-author">— Rafael M.</span>
+          </div><!--review-card-->
+          <div class="review-card reveal" style="transition-delay:.2s">
+            <div class="stars">★★★★★</div>
+            <p>"Pedi o decant pra testar antes e já virei cliente fiel do frasco cheio."</p>
+            <span class="review-author">— Bianca A.</span>
+          </div><!--review-card-->
+        </div><!--reviews-grid-->
+      </div><!--wrap-->
+    </section><!--avaliacoes-->
+
+  </main>
+
+  <footer id="contato">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about reveal">
+          <div class="footer-brand">
+            <img src="images/logo.jpg" alt="Logo CR Store">
+            <span class="brand-name" style="font-size:1.1rem;">CR STORE</span>
+          </div><!--footer-brand-->
+          <p>Perfumaria árabe de luxo. Fragrâncias marcantes selecionadas para quem não passa despercebido.</p>
+        </div><!--footer-about-->
+
+        <div class="footer-col reveal" style="transition-delay:.1s">
+          <h4>Atendimento</h4>
+          <ul>
+            <!-- vvv troque o número do whatsapp aqui (e também no script.js, item 1) -->
+            <li><a href="https://wa.me/5511994773243" target="_blank" rel="noopener">WhatsApp: (11) 99477-3243</a></li>
+            <li>Seg a sáb — 9h às 19h</li>
+          </ul>
+        </div><!--footer-col-->
+
+        <div class="footer-col reveal" style="transition-delay:.2s">
+          <h4>Loja</h4>
+          <ul>
+            <li><a href="#colecao">Coleção</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+          </ul>
+        </div><!--footer-col-->
+      </div><!--footer-grid-->
+
+      <div class="footer-bottom">
+        <span>© 2026 CR Store — Todos os direitos reservados.</span>
+        <span>Pedidos processados via WhatsApp</span>
+        <a href="#" id="pa-link-acesso" class="pa-link-admin">Acesso admin</a>
+      </div><!--footer-bottom-->
+    </div><!--wrap-->
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/5511994773243" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67a8.2 8.2 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.82c0 4.55-3.7 8.25-8.25 8.25a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c0-4.55 3.7-8.24 8.25-8.24M8.53 6.85c-.17 0-.44.06-.67.32-.23.25-.87.86-.87 2.08 0 1.22.9 2.4 1.02 2.57.12.17 1.76 2.8 4.35 3.9.6.27 1.08.42 1.45.54.61.19 1.17.16 1.6.1.5-.08 1.51-.62 1.72-1.21.21-.6.21-1.11.15-1.22-.06-.11-.23-.17-.48-.29-.25-.13-1.51-.75-1.75-.83-.23-.09-.4-.13-.57.13-.17.25-.65.83-.8 1-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.4-.79-1.91-.2-.5-.42-.43-.57-.43z"/></svg>
+  </a><!--wa-float-->
+
+  <button class="top-float" id="top-float" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24"><path d="M12 5l-7 7h4v7h6v-7h4z"/></svg>
+  </button><!--top-float-->
+
+  <div class="overlay" id="overlay" onclick="closeCart()"></div><!--overlay-->
+
+  <aside class="drawer" id="drawer" aria-label="Carrinho de compras">
+    <div class="drawer-head">
+      <h3>Seu carrinho</h3>
+      <button class="drawer-close" onclick="closeCart()" aria-label="Fechar carrinho">×</button>
+    </div><!--drawer-head-->
+
+    <div class="drawer-body" id="drawer-body">
+      <p class="empty-cart">Seu carrinho está vazio.<br>Adicione um perfume da coleção.</p>
+    </div><!--drawer-body-->
+
+    <div class="drawer-foot">
+      <div class="total-row"><span>Total</span><span id="drawer-total">R$ 0,00</span></div>
+      <button class="checkout-btn" id="checkout-open" onclick="openCheckout()" disabled>
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2"/></svg>
+        Finalizar no WhatsApp
+      </button>
+    </div><!--drawer-foot-->
+  </aside><!--drawer-->
+
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Finalizar pedido">
+    <div class="modal">
+      <h3>Últimos detalhes</h3>
+      <p class="sub">Preencha para enviarmos seu pedido certinho pelo WhatsApp.</p>
+
+      <div class="field"><label for="f-nome">Nome completo</label><input type="text" id="f-nome" placeholder="Seu nome"></div>
+      <div class="field"><label for="f-endereco">Endereço para entrega</label><input type="text" id="f-endereco" placeholder="Rua, número, bairro, cidade"></div>
+      <div class="field">
+        <label for="f-pagamento">Forma de pagamento</label>
+        <select id="f-pagamento">
+          <option>Pix</option>
+          <option>Cartão na entrega</option>
+          <option>Dinheiro</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-obs">Observações (opcional)</label><textarea id="f-obs" placeholder="Ex: entregar após as 18h"></textarea></div>
+
+      <p class="lgpd-note">Seus dados são usados apenas para processar este pedido via WhatsApp e não ficam armazenados em nosso site, em conformidade com a LGPD (Lei nº 13.709/2018). Saiba mais na nossa <a href="politica-privacidade.html" target="_blank">Política de Privacidade</a>.</p>
+
+      <div class="modal-actions">
+        <button class="btn-ghost" onclick="closeCheckout()">Voltar</button>
+        <button class="checkout-btn" onclick="sendToWhatsApp()">Enviar pedido</button>
+      </div><!--modal-actions-->
+    </div><!--modal-->
+  </div><!--modal-overlay-->
+
+  <!-- tela de zoom da foto — abre quando o cliente clica em qualquer
+       foto real de produto, pra ler detalhes/infográficos com calma -->
+  <div class="lightbox-overlay" id="lightbox-overlay" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox()" aria-label="Fechar">×</button>
+    <img id="lightbox-img" src="" alt="Foto ampliada do produto">
+  </div><!--lightbox-overlay-->
+
+  <!-- =====================================================================
+       PAINEL DE PREÇOS (admin oculto) — não tem link visível pra ele em
+       lugar nenhum, exceto o "Acesso admin" discreto no rodapé, que pede
+       senha. Veja o topo do painel-admin.js pra trocar a senha padrão.
+       ===================================================================== -->
+  <section id="painel-admin" aria-hidden="true">
+    <div class="pa-header">
+      <div>
+        <h1>Painel de Preços — CR Store</h1>
+        <p>Edite o preço, o atacado ou o decant de qualquer produto. Os cards do site ali atrás já atualizam na hora, pra você conferir antes de baixar o <strong style="color:var(--gold-bright)">produtos.js</strong> novo, no final.</p>
+      </div>
+      <button class="pa-fechar" id="pa-btn-fechar" aria-label="Fechar painel">✕</button>
+    </div><!--pa-header-->
+
+    <div class="pa-wrap">
+      <div class="pa-toolbar">
+        <input type="text" id="pa-campo-busca" placeholder="Buscar por nome do perfume...">
+        <select id="pa-filtro-cat">
+          <option value="todos">Todas as categorias</option>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="unissex">Unissex</option>
+        </select>
+        <div class="pa-bulk">
+          <span>Reajuste em massa:</span>
+          <input type="text" id="pa-bulk-pct" placeholder="ex: 10 ou -5">
+          <span>%</span>
+          <button id="pa-btn-bulk" class="pa-ghost">Aplicar nos visíveis</button>
+        </div>
+      </div><!--pa-toolbar-->
+
+      <div class="pa-status">
+        <span><span id="pa-dirty-count">0</span> produto(s) alterado(s) desde o último download</span>
+        <div style="display:flex; gap:10px;">
+          <button id="pa-btn-reset" class="pa-ghost">Restaurar tudo</button>
+          <button id="pa-btn-download" class="pa-primary">Baixar produtos.js atualizado</button>
+        </div>
+      </div><!--pa-status-->
+
+      <!-- CALCULADORA DE PEDIDO — some até você preencher alguma "Qtd. pedido" -->
+      <div class="pa-pedido-bar" id="pa-pedido-bar" hidden>
+        <div><span>Itens no pedido</span><strong id="pa-pedido-itens">0</strong></div>
+        <div><span>Investimento (custo)</span><strong id="pa-pedido-custo">R$ 0,00</strong></div>
+        <div><span>Receita estimada</span><strong id="pa-pedido-receita">R$ 0,00</strong></div>
+        <div><span>Lucro estimado</span><strong id="pa-pedido-lucro">R$ 0,00</strong></div>
+        <button id="pa-btn-limpar-pedido" class="pa-ghost">Limpar quantidades</button>
+      </div><!--pa-pedido-bar-->
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:50px;">ID</th>
+            <th>Produto</th>
+            <th style="width:100px;">Categoria</th>
+            <th style="width:110px;">Preço varejo</th>
+            <th style="width:100px;">Atacado</th>
+            <th style="width:90px;">Decant</th>
+            <th style="width:100px;">Custo (fornec.)</th>
+            <th style="width:120px;">Margem</th>
+            <th style="width:70px;">Qtd. pedido</th>
+          </tr>
+        </thead>
+        <tbody id="pa-tbody"></tbody>
+      </table>
+
+      <p class="pa-empty" id="pa-empty-msg" hidden>Nenhum produto encontrado com esse filtro.</p>
+
+      <p class="pa-nota">"Custo" é o que você paga pro fornecedor — nunca aparece pro cliente, só serve pra calcular sua margem aqui no painel. "Qtd. pedido" é uma calculadora pra planejar a próxima compra: não é salva no produtos.js nem muda nada no site, fica só neste navegador. Os demais campos: suas edições já atualizam o site ao vivo pra conferência, mas só valem de verdade depois que você baixar o arquivo e substituir o <strong>produtos.js</strong> antigo.</p>
+    </div><!--pa-wrap-->
+
+    <div class="pa-toast" id="pa-toast"></div>
+  </section><!--painel-admin-->
+
+  <!-- produtos.js = banco de dados (produtos, ofertas, whatsapp).
+       Precisa vir ANTES do script.js, que é quem usa esses dados. -->
+  <script src="produtos.js"></script>
+  <script src="script.js"></script>
+  <script src="painel-admin.js"></script>
+</body>
+</html>
