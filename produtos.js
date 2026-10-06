@@ -101,7 +101,7 @@ const ITENS_POR_PAGINA = 8;   // <<< quantos produtos aparecem por página
 
     {id:25, name:"Liquid Brun (French Avenue)", tag:"Oriental Gourmand Amadeirado (Quente, especiado, alcoólico e extremamente sedutor — inspirado no Althaïr da Parfums de Marly).", note:"Perfume marcante e opulentamente doce, que combina o calor e o dinamismo da canela com a cremosidade luxuosa da baunilha de Bourbon e um toque denso de pralinê amadeirado.", price:350.00, atacado:"consultar", decant:60.00, cat:"masculino", c:["#3a2c12", "#160f06"], custo:0.00},
 
-    {id:26, name:"Flor de Marrakech", tag:"Floral Oriental", note:"Rosa turca, açafrão e almíscar", price:199.90, atacado:149.90, decant:43.90, cat:"feminino", c:["#3a1a1c", "#160a0b"], custo:0.00},
+    {id:26, name:"Flor de Marrch", tag:"Floral Oriental", note:"Rosa turca, açafrão e almíscar", price:199.90, atacado:149.90, decant:43.90, cat:"feminino", c:["#3a1a1c", "#160a0b"], custo:0.00},
 
     {id:27, name:"Sultana", tag:"Floral Adocicado", note:"Âmbar, baunilha e jasmim", price:199.90, atacado:149.90, decant:43.90, cat:"feminino", c:["#3a230f", "#170f06"], custo:0.00},
 
