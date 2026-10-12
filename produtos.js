@@ -147,4 +147,30 @@ const ITENS_POR_PAGINA = 8;   // <<< quantos produtos aparecem por página
 
     {id:54, name:"Horizonte Arabe", tag:"Unissex Ambarado", note:"Âmbar, sândalo e especiarias", price:199.90, atacado:149.90, decant:43.90, cat:"unissex", c:["#331c28","#130a0f"], custo:0.00, indicacao:false},
 
-    {id:55, name:"Chama Dourada", tag:"Fresco Amadeirado
+    {id:55, name:"Chama Dourada", tag:"Fresco Amadeirado", note:"Oud, rosa e almíscar", price:214.90, atacado:161.90, decant:47.90, cat:"unissex", c:["#211a10","#0b0805"], custo:0.00, indicacao:false},
+
+    {id:56, name:"Sombra de Oud", tag:"Unissex Amadeirado", note:"Almíscar branco e sândalo", price:229.90, atacado:172.90, decant:50.90, cat:"unissex", c:["#2a2115","#0f0b06"], custo:0.00, indicacao:false},
+
+    {id:57, name:"Miragem Dourada", tag:"Unissex Intenso", note:"Âmbar negro, baunilha e couro", price:149.90, atacado:112.90, decant:32.90, cat:"unissex", c:["#3a2c12","#160f06"], custo:0.00, indicacao:false},
+
+    {id:58, name:"Reino de Ouro", tag:"Oriental Resinoso", note:"Incenso, oud e resinas", price:164.90, atacado:123.90, decant:36.90, cat:"unissex", c:["#3a1a1c","#160a0b"], custo:0.00, indicacao:false},
+
+    {id:59, name:"Estrela do Deserto", tag:"Unissex Ambarado", note:"Âmbar, sândalo e especiarias", price:179.90, atacado:134.90, decant:39.90, cat:"unissex", c:["#3a230f","#170f06"], custo:0.00, indicacao:false},
+
+    {id:60, name:"Heranca Real", tag:"Fresco Amadeirado", note:"Oud, rosa e almíscar", price:179.90, atacado:134.90, decant:39.90, cat:"unissex", c:["#232323","#0c0c0c"], custo:0.00, indicacao:false},
+  ];
+
+/* =====================================================================
+   3) CARROSSEL DE OFERTAS (caixa ao lado do título "Fragrâncias que
+   contam histórias")
+   Cada linha aponta pra um produto (pelo "id" lá de cima) e adiciona
+   um selo + um preço "de/por". Pra trocar quem aparece no carrossel,
+   troque o productId. Pra tirar o "preço antigo" (sem promoção), é só
+   apagar o oldPrice ou deixar null.
+   ===================================================================== */
+const offers = [
+  { productId: 2, badge: "O CAMPEÃO DE VENDAS", oldPrice: 359.90 },
+  { productId: 5, badge: "O PREFERIDO DELAS", oldPrice: null },
+  { productId: 20, badge: "O INESQUECÍVEL", oldPrice: null },
+];
+
