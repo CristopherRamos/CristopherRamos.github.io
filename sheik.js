@@ -19,11 +19,11 @@
 
   var CONFIG = {
     VIDEO: 'media/sheik.mp4',
-    FALA:'Seja bem-vindo à CR Store.', // <<< texto do balão (troque pelo que o sheik fala no áudio)
+    FALA:'Bem-vindo à CR Store.', // <<< texto do balão (troque pelo que o sheik fala no áudio)
     POSICAO: 'direita',            // 'direita' ou 'esquerda'
     ATRASO_MS: 1500,               // espera depois da página carregar, pra não competir com ela
     TEMPO_PARADO_MS: 8000,         // depois que o vídeo acaba, quanto tempo fica parado esperando o clique em "Ouvir"
-    REPETIR_DEPOIS_DE_HORAS: 3,   // só aparece de novo pro mesmo visitante depois desse tempo (0 = aparece sempre)
+    REPETIR_DEPOIS_DE_HORAS: 0,   // só aparece de novo pro mesmo visitante depois desse tempo (0 = aparece sempre)
     CHAVE_VERDE_MIN: 8,            // recorte do verde: abaixo disso o pixel é do personagem (100% visível)
     CHAVE_VERDE_MAX: 34,           // ...acima disso é fundo (100% transparente). Se sobrar contorno/véu verde, mexa nesses dois
     FORCAR_2D: false               // true = não usa a placa de vídeo (WebGL) e faz o recorte no processador (mais lento; só pra testar)
