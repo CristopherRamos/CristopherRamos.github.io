@@ -1,0 +1,210 @@
+/* =====================================================================
+   EFEITOS.CSS — animações e "magia" do site todo (CR Store)
+   Carregado DEPOIS do style.css, então o que está aqui tem a palavra final.
+   Quer desligar algum efeito? Mais fácil pelo painel no topo do efeitos.js.
+   ===================================================================== */
+
+:root{
+  /* =================================================================
+     >>> VELOCIDADE DO ANEL GIRANDO EM VOLTA DO LOGO <<<
+     Quanto MAIOR o número de segundos, mais DEVAGAR gira.
+     --logo-anel-vel    = o anel dourado (antes era 7s)
+     --logo-estrela-vel = a estrelinha branca que orbita (antes era 3.2s)
+     ================================================================= */
+  /* ESPESSURA DO ARO dourado em volta do logo (o "padding"): 0.8px = fininho. Aumente p/ engrossar (ex: 3px) */
+  --logo-anel-espessura: 0.8px;
+  --logo-anel-vel: 16s;
+  --logo-estrela-vel: 9s;
+
+  /* cor dos textos secundários (as frases "cinza"): era #b6a688, agora mais clara */
+  --muted: #d9ccae;
+}
+body{font-weight:400;} /* letra fina (300) sobre fundo escuro parecia cinza apagada */
+
+/* ---------- 1) LOGO REDONDO COM ANEL DOURADO GIRANDO (cabeçalho e rodapé) ---------- */
+.brand a,.logo-anel{position:relative; display:block; width:60px; height:60px; padding:var(--logo-anel-espessura); border-radius:50%; flex:none;}
+.brand a::before,.logo-anel::before{ /* o anel: um degradê dourado que gira devagar */
+  content:""; position:absolute; inset:0; border-radius:50%;
+  background:conic-gradient(from 0deg, var(--gold-dim), var(--gold-bright), #fff3cf, var(--gold), var(--gold-dim), var(--gold-bright), var(--gold-dim));
+  animation:efGira var(--logo-anel-vel) linear infinite;
+}
+.brand a::after,.logo-anel::after{ /* uma "estrelinha" que orbita o anel + brilho pulsando */
+  content:""; position:absolute; inset:-3px; border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle at 50% 0, #fff 0 2px, rgba(255,243,207,.9) 3px, transparent 5px);
+  filter:drop-shadow(0 0 4px var(--gold-bright)); animation:efGira var(--logo-estrela-vel) linear infinite;
+}
+.brand img,.logo-anel img{
+  position:relative; z-index:1; width:100%; height:100%; border-radius:50%; object-fit:cover;
+  border:0; background:#000; transition:transform .6s cubic-bezier(.2,.9,.3,1.2);
+}
+.brand a:hover img,.logo-anel:hover img{transform:rotate(360deg) scale(1.06);}
+.brand{filter:drop-shadow(0 0 10px rgba(201,162,39,.35)); animation:efHalo 3.6s ease-in-out infinite;}
+@keyframes efHalo{50%{filter:drop-shadow(0 0 18px rgba(232,199,102,.6));}}
+@keyframes efGira{to{transform:rotate(360deg);}}
+/* "CR STORE": dourado SÓLIDO (o degradê dentro da letra sumia em alguns navegadores) */
+.brand-name{
+  color:#f0d27a; -webkit-text-fill-color:#f0d27a; background:none; animation:none;
+  text-shadow:0 0 12px rgba(232,199,102,.45), 0 1px 2px rgba(0,0,0,.8);
+}
+@keyframes efBrilho{from{background-position:120% 0;} to{background-position:-120% 0;}}
+
+/* ---------- 2) BARRA DE PROGRESSO DA ROLAGEM (fio dourado no topo) ---------- */
+#ef-progresso{
+  position:fixed; top:0; left:0; right:0; height:3px; z-index:120; pointer-events:none;
+  transform-origin:0 50%; transform:scaleX(0);
+  background:linear-gradient(90deg, var(--gold-dim), var(--gold-bright), #fff3cf);
+  box-shadow:0 0 10px var(--gold-bright);
+}
+
+/* ---------- 3) ABERTURA (splash) — aparece 1x por visita ---------- */
+#ef-splash{
+  position:fixed; inset:0; z-index:300; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;
+  background:radial-gradient(circle at 50% 45%, #2a210e, #0a0805 70%);
+  transition:opacity .7s ease, visibility .7s, transform .9s cubic-bezier(.7,0,.3,1);
+}
+#ef-splash.ef-sai{opacity:0; visibility:hidden; transform:scale(1.15);}
+.ef-splash-logo{position:relative; width:128px; height:128px; padding:6px; border-radius:50%; animation:efEntra 1s cubic-bezier(.2,.9,.3,1.2) both;}
+.ef-splash-logo::before{content:""; position:absolute; inset:0; border-radius:50%; animation:efGira 3s linear infinite;
+  background:conic-gradient(var(--gold-dim), var(--gold-bright), #fff3cf, var(--gold), var(--gold-dim));}
+.ef-splash-logo::after{content:""; position:absolute; inset:-18px; border-radius:50%; border:1px solid rgba(232,199,102,.35); animation:efOnda 1.8s ease-out infinite;}
+.ef-splash-logo img{position:relative; z-index:1; width:100%; height:100%; border-radius:50%; object-fit:cover; border:3px solid #0a0805;}
+.ef-splash-nome{font-family:'Marcellus',serif; font-size:1.5rem; color:var(--gold-bright); letter-spacing:.2em; animation:efLetras 1.6s ease-out .3s both;}
+.ef-splash-barra{width:150px; height:2px; background:rgba(201,162,39,.2); overflow:hidden;}
+.ef-splash-barra i{display:block; height:100%; background:linear-gradient(90deg,var(--gold-dim),#fff3cf); animation:efCarrega 1.4s ease-in-out forwards;}
+@keyframes efEntra{from{opacity:0; transform:scale(.4) rotate(-120deg);} to{opacity:1; transform:none;}}
+@keyframes efOnda{from{transform:scale(.85); opacity:.9;} to{transform:scale(1.5); opacity:0;}}
+@keyframes efLetras{from{opacity:0; letter-spacing:.7em;} to{opacity:1; letter-spacing:.2em;}}
+@keyframes efCarrega{from{width:0;} to{width:100%;}}
+
+/* ---------- 4) APARECER NA ROLAGEM (mais bonito que o antigo) ---------- */
+.reveal{transform:translateY(34px) scale(.97); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);}
+.reveal.in-view{transform:none;}
+
+/* ---------- 5) TÍTULOS: cor sólida bem clara + brilho dourado suave (antes tinha um degradê que apagava a letra) ---------- */
+.section-head h2,.strip-item h3,.about h2,.review-card h3{
+  color:#fffaf0; -webkit-text-fill-color:#fffaf0; background:none; animation:none;
+  -webkit-text-stroke:0.6px #fffaf0; /* engrossa um pouquinho a letra fina da fonte (tire essa linha se achar pesado) */
+  text-shadow:0 0 14px rgba(232,199,102,.35), 0 1px 2px rgba(0,0,0,.8);
+}
+/* "histórias": sem override aqui — vale o dourado pulsante original (goldColorShift, no style.css) */
+.section-head h2{padding-bottom:12px;}
+
+/* ---------- 6) BOTÕES: brilho que varre + levantam ao passar o mouse ---------- */
+.btn-primary,.offer-cta{position:relative; overflow:hidden; transition:transform .25s, box-shadow .25s, background .2s;}
+.btn-primary::after,.offer-cta::after{
+  content:""; position:absolute; top:0; bottom:0; left:-80%; width:45%; pointer-events:none;
+  background:linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform:skewX(-20deg);
+  animation:efVarre 4s ease-in-out 1.5s infinite;
+}
+@keyframes efVarre{0%{left:-80%;} 40%,100%{left:140%;}}
+.btn-primary:hover,.offer-cta:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(232,199,102,.4);}
+.btn-ghost{position:relative; transition:transform .25s, border-color .2s, color .2s, box-shadow .25s;}
+.btn-ghost:hover{transform:translateY(-3px); box-shadow:0 0 22px rgba(201,162,39,.25), inset 0 0 18px rgba(201,162,39,.1);}
+.add-btn,.cart-btn,.chip,.page-btn,.mini-add{transition:transform .2s, box-shadow .25s, border-color .2s, background .2s, color .2s;}
+.add-btn:hover,.chip:hover,.page-btn:hover,.mini-add:hover{transform:translateY(-2px) scale(1.04); box-shadow:0 6px 18px rgba(201,162,39,.28);}
+.add-btn:active,.chip:active,.cart-btn:active{transform:scale(.94);}
+.cart-count.ef-pula{animation:efPula .55s cubic-bezier(.2,.9,.3,1.6);}
+@keyframes efPula{40%{transform:scale(1.7) rotate(-12deg);} 100%{transform:none;}}
+
+/* ---------- 7) CARDS: inclinam em 3D e ganham um "holofote" dourado que segue o mouse ---------- */
+.card{position:relative; transform-style:preserve-3d;}
+.card::before{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0; transition:opacity .3s;
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%), rgba(232,199,102,.17), transparent 62%);
+}
+.card:hover::before{opacity:1;}
+.card.in-view{transition:opacity .8s ease, transform .15s ease-out, border-color .25s, box-shadow .3s;}
+.card:hover{box-shadow:0 18px 44px rgba(0,0,0,.5), 0 0 28px rgba(201,162,39,.16);}
+.card.ef-solta{transition:transform .6s cubic-bezier(.2,.9,.3,1.1), border-color .25s, box-shadow .3s !important;}
+
+/* ---------- 8) CARROSSEL DO TOPO flutua suavemente + FAGULHAS ---------- */
+.offer-carousel{translate:0 0; animation:efFlutua 7s ease-in-out infinite;}
+@keyframes efFlutua{50%{translate:0 -10px;}}
+.ef-fagulha{
+  position:fixed; z-index:140; pointer-events:none; color:var(--gold-bright); font-size:12px; line-height:1;
+  text-shadow:0 0 8px rgba(232,199,102,.9); animation:efFagulha var(--d,.8s) ease-out forwards;
+}
+@keyframes efFagulha{from{opacity:1; transform:translate(0,0) scale(1) rotate(0);} to{opacity:0; transform:translate(var(--dx,0),var(--dy,20px)) scale(.2) rotate(180deg);}}
+#ef-aura{
+  position:fixed; top:0; left:0; z-index:2; width:340px; height:340px; margin:-170px 0 0 -170px; pointer-events:none;
+  background:radial-gradient(circle, rgba(232,199,102,.10), transparent 65%); opacity:0; transition:opacity .4s; mix-blend-mode:screen;
+}
+#ef-aura.ef-on{opacity:1;}
+
+/* ---------- 9) DETALHES: WhatsApp com ondas, faixa, rodapé ---------- */
+.wa-float::after{content:""; position:absolute; inset:0; border-radius:50%; border:2px solid rgba(76,175,109,.7); animation:efOnda 2.2s ease-out infinite; pointer-events:none;}
+.marquee span{transition:color .3s, text-shadow .3s;}
+.marquee span:hover{color:var(--gold-bright); text-shadow:0 0 14px rgba(232,199,102,.7);}
+footer{position:relative;}
+footer::before{content:""; position:absolute; top:-1px; left:0; right:0; height:2px; background:linear-gradient(90deg, transparent, var(--gold-bright), #fff3cf, var(--gold-bright), transparent); background-size:200% 100%; animation:efBrilho 5s linear infinite;}
+.review-card,.strip-item{transition:transform .3s, box-shadow .3s, border-color .3s;}
+.review-card:hover,.strip-item:hover{transform:translateY(-5px); box-shadow:0 14px 34px rgba(0,0,0,.4), 0 0 24px rgba(201,162,39,.14); border-color:var(--gold-dim);}
+
+/* ---------- 10) MOLDURA DA FOTO QUE SE AJUSTA SOZINHA À PROPORÇÃO DA FOTO ----------
+   A moldura dourada (borda + filete interno) agora é do .foto-moldura, que "abraça" a foto:
+   foto vertical -> moldura vertical; horizontal -> horizontal; quadrada -> quadrada.
+   Não precisa recortar nem redimensionar nada, é só colocar a foto na pasta images/.
+   O espaço reservado pra foto (altura) continua fixo, assim os cards ficam alinhados na grade. */
+.card-icon{--card-foto-h:210px;}
+.offer-slide .card-icon{--card-foto-h:120px;}
+@media (max-width:600px){ .card-icon{--card-foto-h:260px;} .offer-slide .card-icon{--card-foto-h:100px;} }
+.card-icon.tem-foto{border-color:transparent; padding:0;}
+.card-icon.tem-foto::after{display:none;}
+.foto-moldura{
+  position:relative; z-index:1; display:block; width:fit-content; max-width:100%;
+  padding:8px; border:1px solid var(--gold-dim); border-radius:10px; background:#0d0a06;
+  box-shadow:0 0 22px rgba(201,162,39,.14);
+}
+.foto-moldura::after{content:""; position:absolute; inset:4px; border:1px solid rgba(201,162,39,.38); border-radius:7px; pointer-events:none;}
+.card-icon .foto-moldura img{display:block; width:auto; height:auto; max-width:100%; max-height:calc(var(--card-foto-h) - 20px); object-fit:contain; border-radius:5px;}
+
+/* ---------- 11) FORMAS MAIS REFINADAS (cantos arredondados + detalhes de acabamento) ----------
+   Nenhuma COR foi alterada aqui — só o formato: cantos suaves, um fio de luz no topo dos botões,
+   moldura interna no destaque e sombras mais delicadas. Quer cantos mais/menos redondos?
+   Mude os números de "border-radius" abaixo (0 = quadrado, 999px = pílula). */
+.btn-primary,.btn-ghost,.cart-btn,.fav-nav-btn,.checkout-btn,.promo-botao{border-radius:14px;}
+.btn-primary,.checkout-btn,.promo-botao{box-shadow:inset 0 1px 0 rgba(255,255,255,.38), inset 0 -2px 0 rgba(0,0,0,.14), 0 8px 22px rgba(201,162,39,.2);}
+.btn-ghost{box-shadow:inset 0 0 0 3px rgba(201,162,39,.06), inset 0 1px 0 rgba(232,199,102,.14);}
+.cart-btn,.fav-nav-btn{box-shadow:inset 0 1px 0 rgba(232,199,102,.14), 0 4px 14px rgba(0,0,0,.35);}
+.offer-cta,.add-btn,.search-box,.page-btn,.qty-btn{border-radius:12px;}
+.offer-arrow{box-shadow:0 4px 12px rgba(0,0,0,.4);}
+
+/* o quadro do DESTAQUE: cantos suaves, sombra funda e um filete dourado por dentro */
+.offer-carousel{border-radius:24px; box-shadow:0 26px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(232,199,102,.16);}
+.offer-carousel::before{content:""; position:absolute; inset:7px; border:1px solid rgba(201,162,39,.2); border-radius:18px; pointer-events:none;}
+.offer-badge,.card-badge,.promo-etiqueta,.promo-selo{border-radius:999px;}
+.offer-badge{padding-left:14px; padding-right:14px;}
+
+/* cards de perfume, comentários, faixa de destaques, janelas */
+.card{border-radius:20px; box-shadow:inset 0 1px 0 rgba(232,199,102,.08), 0 10px 30px rgba(0,0,0,.28);}
+.card::before{border-radius:inherit;}
+.card-icon{border-radius:14px;}
+.foto-moldura{border-radius:15px;} .foto-moldura::after{border-radius:11px;} .card-icon .foto-moldura img{border-radius:9px;}
+.review-card,.strip-item{border-radius:18px;}
+.modal{border-radius:22px;}
+.lightbox-overlay img{border-radius:14px;}
+.promo-caixa{border-radius:24px;} .promo-moldura{border-radius:18px;}
+
+/* ---------- 12) PRODUTO INDISPONÍVEL (sem estoque) ----------
+   Ligado pelo campo "esgotado" do produto (checkbox "Em estoque" no painel admin). */
+.card.esgotado .card-icon{filter:grayscale(.9) brightness(.55);}
+.card.esgotado .card-name,.card.esgotado .card-note,.card.esgotado .card-tag,.card.esgotado .price-list,.card.esgotado .card-foot{opacity:.5;}
+.card.esgotado .add-btn:disabled,.card.esgotado .mini-add:disabled{opacity:.35; cursor:not-allowed; transform:none; box-shadow:none; background:transparent; color:var(--muted); border-color:var(--gold-dim);}
+.card-badge-esgotado{background:#2a2418; color:var(--cream); border:1px solid var(--gold-dim);}
+.esgotado-faixa{
+  position:absolute; left:50%; top:50%; z-index:4; transform:translate(-50%,-50%); pointer-events:none; white-space:nowrap;
+  padding:9px 18px; border-radius:999px; font-size:0.72rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--gold-bright); background:rgba(10,8,5,.88); border:1px solid var(--gold); box-shadow:0 8px 24px rgba(0,0,0,.6);
+}
+.pa-esgotado .pa-nome{opacity:.55; text-decoration:line-through;}
+
+/* ---------- quem prefere menos movimento não vê nada disso mexendo ---------- */
+@media (prefers-reduced-motion: reduce){
+  .brand,.brand a::before,.brand a::after,.logo-anel::before,.logo-anel::after,.section-head h2,.strip-item h3,.about h2,.review-card h3,.btn-primary::after,.offer-cta::after,
+  .offer-carousel,.wa-float::after,footer::before{animation:none !important;}
+  .reveal{transition:opacity .3s;}
+  #ef-splash,#ef-aura,.ef-fagulha{display:none !important;}
+}
+@media (max-width:600px){ .brand a{width:52px; height:52px;} }
+
+.footer-brand .logo-anel{width:54px; height:54px; display:block; flex:none;}
